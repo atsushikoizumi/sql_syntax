@@ -27,8 +27,12 @@ mysql 向けの sql のサンプルを載せていく。<br>
     show tables;
     show tables in dbname;
     show tbales in dbname like '%pattern%';
+    show table status\G
+    show table status like '%pattern%'\G
+    ```
 
 5. ユーザーの所有権限の確認
     ```
-    show grants for user@hostname;
+    show grants for `user`@`hostname`;
     ```
+
