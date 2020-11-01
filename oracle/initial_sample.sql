@@ -1,0 +1,75 @@
+set line 1000
+set pagesize 1000
+column USERNAME format a30
+column GRANTEE format a30
+column GRANTED_ROLE format a30
+
+
+-- user/schema
+CREATE USER XA_ADM IDENTIFIED BY "XA_ADM_DBA" DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+CREATE USER XB_ADM IDENTIFIED BY "XB_ADM_DBA" DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+CREATE USER XA_APL1 IDENTIFIED BY "XA_APL1_PASS" DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+CREATE USER XA_BAT1 IDENTIFIED BY "XA_BAT1_PASS" DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp;
+SELECT USERNAME FROM ALL_USERS WHERE USERNAME like 'XA_%' order by USERNAME;
+
+
+-- grant role to user
+GRANT DBA TO XA_ADM;
+GRANT DBA TO XB_ADM;
+GRANT CONNECT TO XA_APL1;
+GRANT CONNECT TO XA_BAT1;
+SELECT GRANTEE,GRANTED_ROLE FROM dba_role_privs where GRANTEE like 'XA_%' order by GRANTEE;
+
+
+-- [XA_ADM]
+-- create object
+-- table family
+CREATE TABLE XA_ADM.family (id NUMBER(6),last_name VARCHAR2(20));
+INSERT INTO XA_ADM.family values(000001,'佐藤');
+INSERT INTO XA_ADM.family values(000002,'鈴木');
+INSERT INTO XA_ADM.family values(000003,'山田');
+GRANT SELECT ON XA_ADM.family TO XA_APL1;
+GRANT ALL ON XA_ADM.family TO XA_BAT1;
+
+-- table employee
+CREATE TABLE XA_ADM.employee (id NUMBER(6),last_name VARCHAR2(20));
+INSERT INTO XA_ADM.employee values(000001,'太郎');
+INSERT INTO XA_ADM.employee values(000002,'次郎');
+INSERT INTO XA_ADM.employee values(000003,'花子');
+GRANT SELECT ON XA_ADM.employee TO XA_APL1;
+GRANT ALL ON XA_ADM.employee TO XA_BAT1;
+
+-- view family
+CREATE VIEW XA_ADM.family_v AS SELECT * FROM XA_ADM.family;
+GRANT SELECT ON XA_ADM.family_v TO XA_APL1;
+
+-- material view employee_mv
+CREATE MATERIALIZED VIEW XA_ADM.employee_mv  AS SELECT * FROM XA_ADM.employee;
+GRANT SELECT ON XA_ADM.employee_mv TO XA_APL1;
+
+
+
+-- [XB_ADM]
+-- create object
+CREATE TABLE XB_ADM.family (id NUMBER(6),last_name VARCHAR2(20));
+INSERT INTO XB_ADM.family values(000001,'佐藤');
+INSERT INTO XB_ADM.family values(000002,'鈴木');
+INSERT INTO XB_ADM.family values(000003,'山田');
+GRANT SELECT ON XB_ADM.family TO XA_APL1;
+GRANT ALL ON XB_ADM.family TO XA_BAT1;
+
+-- table employee
+CREATE TABLE XB_ADM.employee (id NUMBER(6),last_name VARCHAR2(20));
+INSERT INTO XB_ADM.employee values(000001,'太郎');
+INSERT INTO XB_ADM.employee values(000002,'次郎');
+INSERT INTO XB_ADM.employee values(000003,'花子');
+GRANT SELECT ON XB_ADM.employee TO XA_APL1;
+GRANT ALL ON XB_ADM.employee TO XA_BAT1;
+
+-- view family
+CREATE VIEW XB_ADM.family_v AS SELECT * FROM XB_ADM.family;
+GRANT SELECT ON XB_ADM.family_v TO XA_APL1;
+
+-- material view employee_mv
+CREATE MATERIALIZED VIEW XB_ADM.employee_mv  AS SELECT * FROM XB_ADM.employee;
+GRANT SELECT ON XB_ADM.employee_mv TO XA_APL1;
