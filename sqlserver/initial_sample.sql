@@ -9,6 +9,7 @@ CREATE LOGIN xx_apl1 WITH PASSWORD = 'xx_apl1_pass', DEFAULT_LANGUAGE = Japanese
 CREATE LOGIN xx_bat1 WITH PASSWORD = 'xx_bat1_pass', DEFAULT_LANGUAGE = Japanese;
 CREATE LOGIN xx_ipls WITH PASSWORD = 'xx_ipls_pass', DEFAULT_LANGUAGE = Japanese;
 CREATE LOGIN xy_adm WITH PASSWORD = 'xy_adm_pass', DEFAULT_LANGUAGE = Japanese;
+CREATE LOGIN xx_text WITH PASSWORD = 'xx_test_pass', DEFAULT_LANGUAGE = Japanese;
 
 
 -- ALter Login
