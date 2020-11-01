@@ -47,9 +47,11 @@ sqlserver 向けの sql を載せていく。
 
 5. RDS SQLServer 監査ログの確認
     ```
-    select TOP 1000 * 
+    select * from msdb.dbo.rds_fn_get_audit_file('D:\rdsdbdata\SQLAudit\*.sqlaudit', default, default);
+    GO
+    select TOP 1000 event_time,server_principal_name,database_principal_name,action_id,class_type,statement,application_name
     from msdb.dbo.rds_fn_get_audit_file('D:\rdsdbdata\SQLAudit\*.sqlaudit', default, default) 
-    order by 1 desc;
+    order by event_time desc;
     GO
     -- 転送後の監査ログは ('D:\rdsdbdata\SQLAudit\transmitted\*.sqlaudit', default, default)
     ```
