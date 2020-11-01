@@ -73,49 +73,50 @@ GO
 -- CREATE TABLE
 create table xx_adm.tab1_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO tab1_xx00 (id, name) VALUES ('10', '赤鬼');
-INSERT INTO tab1_xx00 (id, name) VALUES ('20', '青鬼');
+INSERT INTO xx_adm.tab1_xx00 (id, name) VALUES ('10', '赤鬼');
+INSERT INTO xx_adm.tab1_xx00 (id, name) VALUES ('20', '青鬼');
 GO
-select * from tab1_xx00;
+select * from xx_adm.tab1_xx00;
 
-create table tab2_xx00 (id integer, name varchar(10));
+create table xx_adm.tab2_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO tab2_xx00 (id, name) VALUES ('10', 'みかん');
-INSERT INTO tab2_xx00 (id, name) VALUES ('20', 'もも');
+INSERT INTO xx_adm.tab2_xx00 (id, name) VALUES ('10', 'みかん');
 GO
-select * from tab2_xx00;
+INSERT INTO xx_adm.tab2_xx00 (id, name) VALUES ('20', 'もも');
+GO
+select * from xx_adm.tab2_xx00;
 
-create table tab3_xx00 (id integer, name varchar(10));
+create table xx_adm.tab3_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO tab3_xx00 (id, name) VALUES ('10', 'にんじん');
+INSERT INTO xx_adm.tab3_xx00 (id, name) VALUES ('10', 'にんじん');
 GO
-INSERT INTO tab3_xx00 (id, name) VALUES ('20', 'だいこん');
+INSERT INTO xx_adm.tab3_xx00 (id, name) VALUES ('20', 'だいこん');
 GO
-select * from tab3_xx00;
+select * from xx_adm.tab3_xx00;
 
-create table tab4_xx00 (id integer, name varchar(10));
+create table xx_adm.tab4_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO tab4_xx00 (id, name) VALUES ('10', 'ガンダム');
+INSERT INTO xx_adm.tab4_xx00 (id, name) VALUES ('10', 'ガンダム');
 GO
-INSERT INTO tab4_xx00 (id, name) VALUES ('20', 'ザク');
+INSERT INTO xx_adm.tab4_xx00 (id, name) VALUES ('20', 'ザク');
 GO
-select * from tab4_xx00;
+select * from xx_adm.tab4_xx00;
 
-create table tab5_xx00 (id integer, name varchar(10));
+create table xx_adm.tab5_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO tab5_xx00 (id, name) VALUES ('10', '東京都');
+INSERT INTO xx_adm.tab5_xx00 (id, name) VALUES ('10', '東京都');
 GO
-INSERT INTO tab5_xx00 (id, name) VALUES ('20', '千葉県');
+INSERT INTO xx_adm.tab5_xx00 (id, name) VALUES ('20', '千葉県');
 GO
-select * from tab5_xx00;
+select * from xx_adm.tab5_xx00;
 
-create table tab6_xx00 (id integer, name varchar(10));
+create table xx_adm.tab6_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO tab6_xx00 (id, name) VALUES ('10', '山崎');
+INSERT INTO xx_adm.tab6_xx00 (id, name) VALUES ('10', '山崎');
 GO
-INSERT INTO tab6_xx00 (id, name) VALUES ('20', '白州');
+INSERT INTO xx_adm.tab6_xx00 (id, name) VALUES ('20', '白州');
 GO
-select * from tab6_xx00;
+select * from xx_adm.tab6_xx00;
 
 
 -- GRANT XXX ON SCHEMA xx_adm TO xxx;
@@ -137,53 +138,53 @@ GO
 -- xx_ipls
 
 -- CREATE TABLE
-create table itab1_xx00 (id integer, name varchar(10));
+create table xx_ipls.itab1_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO itab1_xx00 (id, name) VALUES ('10', '黄鬼');
+INSERT INTO xx_ipls.itab1_xx00 (id, name) VALUES ('10', '黄鬼');
 GO
-INSERT INTO itab1_xx00 (id, name) VALUES ('20', '緑鬼');
+INSERT INTO xx_ipls.itab1_xx00 (id, name) VALUES ('20', '緑鬼');
 GO
-select * from itab1_xx00;
+select * from xx_ipls.itab1_xx00;
 
-create table itab2_xx00 (id integer, name varchar(10));
+create table xx_ipls.itab2_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO itab2_xx00 (id, name) VALUES ('10', 'りんご');
+INSERT INTO xx_ipls.itab2_xx00 (id, name) VALUES ('10', 'りんご');
 GO
-INSERT INTO itab2_xx00 (id, name) VALUES ('20', 'いちご');
+INSERT INTO xx_ipls.itab2_xx00 (id, name) VALUES ('20', 'いちご');
 GO
-select * from itab2_xx00;
+select * from xx_ipls.itab2_xx00;
 
-create table itab3_xx00 (id integer, name varchar(10));
+create table xx_ipls.itab3_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO itab3_xx00 (id, name) VALUES ('10', 'ほうれん草');
+INSERT INTO xx_ipls.itab3_xx00 (id, name) VALUES ('10', 'ほうれん草');
 GO
-INSERT INTO itab3_xx00 (id, name) VALUES ('20', 'ねぎ');
+INSERT INTO xx_ipls.itab3_xx00 (id, name) VALUES ('20', 'ねぎ');
 GO
-select * from itab3_xx00;
+select * from xx_ipls.itab3_xx00;
 
-create table itab4_xx00 (id integer, name varchar(10));
+create table xx_ipls.itab4_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO itab4_xx00 (id, name) VALUES ('10', 'シャア');
+INSERT INTO xx_ipls.itab4_xx00 (id, name) VALUES ('10', 'シャア');
 GO
-INSERT INTO itab4_xx00 (id, name) VALUES ('20', 'アムロ');
+INSERT INTO xx_ipls.itab4_xx00 (id, name) VALUES ('20', 'アムロ');
 GO
-select * from itab4_xx00;
+select * from xx_ipls.itab4_xx00;
 
-create table itab5_xx00 (id integer, name varchar(10));
+create table xx_ipls.itab5_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO itab5_xx00 (id, name) VALUES ('10', '神奈川県');
+INSERT INTO xx_ipls.itab5_xx00 (id, name) VALUES ('10', '神奈川県');
 GO
-INSERT INTO itab5_xx00 (id, name) VALUES ('20', '沖縄県');
+INSERT INTO xx_ipls.itab5_xx00 (id, name) VALUES ('20', '沖縄県');
 GO
-select * from itab5_xx00;
+select * from xx_ipls.itab5_xx00;
 
-create table itab6_xx00 (id integer, name varchar(10));
+create table xx_ipls.itab6_xx00 (id integer, name varchar(10));
 GO
-INSERT INTO itab6_xx00 (id, name) VALUES ('10', 'ワイン');
+INSERT INTO xx_ipls.itab6_xx00 (id, name) VALUES ('10', 'ワイン');
 GO
-INSERT INTO itab6_xx00 (id, name) VALUES ('20', '焼酎');
+INSERT INTO xx_ipls.itab6_xx00 (id, name) VALUES ('20', '焼酎');
 GO
-select * from itab6_xx00;
+select * from xx_ipls.itab6_xx00;
 
 ----------------------------------------------------------
 use xy00
@@ -225,5 +226,5 @@ INSERT INTO xy_adm.tab1_xy00 (id, name) VALUES ('10', '赤鬼');
 GO
 INSERT INTO xy_adm.tab1_xy00 (id, name) VALUES ('20', '青鬼');
 GO
-select * from tab1_xy00;
+select * from xy_adm.tab1_xy00;
 
