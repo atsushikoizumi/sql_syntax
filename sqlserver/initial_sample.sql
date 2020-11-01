@@ -1,3 +1,6 @@
+--
+-- login by master user
+--
 
 -- Login(Server)作成
 -- DEFAULT_DATABASE の設定は multiAZ では変更できない。
@@ -10,16 +13,14 @@ CREATE LOGIN xy_adm WITH PASSWORD = 'xy_adm_pass', DEFAULT_LANGUAGE = Japanese;
 
 -- ALter Login
 -- DEFAULT_DATABASE の変更は multiAZ では変更できない。
-ALTER LOGIN xx_adm WITH DEFAULT_LANGUAGE = English;
-ALTER LOGIN xx_adm WITH DEFAULT_LANGUAGE = Japanese;
+-- ALTER LOGIN xx_adm WITH DEFAULT_LANGUAGE = English;
+-- ALTER LOGIN xx_adm WITH DEFAULT_LANGUAGE = Japanese;
 
 
 -- ALter Role
--- マスターユーザーでもサーバーロールの変更権限はない。
-ALTER ROLE securityadmin ADD MEMBER xx_adm;
-ALTER ROLE securityadmin ADD MEMBER xy_adm;
-ALTER ROLE securityadmin ADD MEMBER xx_bat1;
-ALTER ROLE securityadmin DROP MEMBER xx_bat1;
+-- ALTER ROLE securityadmin ADD MEMBER xx_adm;
+-- rds では、マスターユーザーでもサーバーロール の変更権限はない。
+-- ALTER ROLE securityadmin ADD MEMBER xx_adm;
 
 
 -- Create Database
@@ -31,7 +32,10 @@ CREATE DATABASE xy00 COLLATE Japanese_CI_AS;
 -- multiAZ では変更できない。
 
 
-------------------------------------------------------------------
+----------------------------------------------------------
+--
+-- login by xx_adm
+--
 use xx00
 GO
 
@@ -55,7 +59,9 @@ ALTER ROLE db_datareader ADD MEMBER xx_apl1;
 GO
 ALTER ROLE db_datawriter ADD MEMBER xx_bat1;
 GO
-ALTER ROLE db_ddladmin DROP MEMBER xx_ipls;
+ALTER ROLE db_ddladmin ADD MEMBER xx_ipls;
+GO
+ALTER ROLE db_datawriter ADD MEMBER xx_ipls;
 GO
 
 
@@ -67,6 +73,9 @@ GO
 
 
 ------------------------------------------------------------------
+--
+-- login by xx_adm
+--
 use xx00
 GO
 
@@ -134,8 +143,12 @@ GRANT SELECT ON xx_adm.tab6_xx00 TO xx_bat1,xx_ipls;
 GO
 
 
-------------------------------------------------------------------
--- xx_ipls
+----------------------------------------------------------
+--
+-- login by xx_ipls
+--
+use xx00
+GO
 
 -- CREATE TABLE
 create table xx_ipls.itab1_xx00 (id integer, name varchar(10));
@@ -186,10 +199,13 @@ INSERT INTO xx_ipls.itab6_xx00 (id, name) VALUES ('20', '焼酎');
 GO
 select * from xx_ipls.itab6_xx00;
 
+
 ----------------------------------------------------------
+--
+-- login by master user
+--
 use xy00
 GO
-
 
 -- Create Database User　
 CREATE USER xx_adm FOR LOGIN xx_adm WITH DEFAULT_SCHEMA = xy_adm;
@@ -211,9 +227,17 @@ ALTER ROLE db_datareader ADD MEMBER xx_apl1;
 GO
 ALTER ROLE db_datawriter ADD MEMBER xx_bat1;
 GO
-ALTER ROLE db_ddladmin DROP MEMBER xx_ipls;
+ALTER ROLE db_ddladmin ADD MEMBER xx_ipls;
 GO
 ALTER ROLE db_owner ADD MEMBER xy_adm;
+GO
+
+
+----------------------------------------------------------
+--
+-- login by xy_adm
+--
+use xy00
 GO
 
 
