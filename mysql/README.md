@@ -1,10 +1,18 @@
 # mysql
 mysql 向けの sql のサンプルを載せていく。<br>
 
-1. 各種環境情報取得
+0. 接続
+```
+mysql -h host -u user -p -P 3306 -D dbname
+```
 
-    データベースの一覧
-    ```
-        show databases;
-    ```
+1. データベースの一覧
+```
+show databases;
+```
+
+2. ユーザー一覧
+```
+select User,Host from mysql.user;
+```
 
