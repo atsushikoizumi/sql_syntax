@@ -30,31 +30,31 @@ SELECT GRANTEE,GRANTED_ROLE FROM dba_role_privs where GRANTEE like 'XX_%' or GRA
 
 set linesize 1000
 set pagesize 1000
-column id format a30
+column id format 9999
 column name format a30
 
-CREATE TABLE xx_adm.tab1_xx00 (id integer, name varchar(10));
+CREATE TABLE xx_adm.tab1_xx00 (id integer, name varchar(30));
 INSERT INTO xx_adm.tab1_xx00 (id, name) VALUES ('10', '赤鬼');
 INSERT INTO xx_adm.tab1_xx00 (id, name) VALUES ('20', '青鬼');
 COMMIT;
 GRANT SELECT ON xx_adm.tab1_xx00 TO XX_APL1;
 GRANT ALL ON xx_adm.tab1_xx00 TO XX_BAT1;
 
-CREATE TABLE xx_adm.tab2_xx00 (id integer, name varchar(10));
+CREATE TABLE xx_adm.tab2_xx00 (id integer, name varchar(30));
 INSERT INTO xx_adm.tab2_xx00 (id, name) VALUES ('10', 'みかん');
 INSERT INTO xx_adm.tab2_xx00 (id, name) VALUES ('20', 'もも');
 COMMIT;
 GRANT SELECT ON xx_adm.tab2_xx00 TO XX_APL1;
 GRANT ALL ON xx_adm.tab2_xx00 TO XX_BAT1;
 
-CREATE TABLE xx_adm.tab3_xx00 (id integer, name varchar(10));
+CREATE TABLE xx_adm.tab3_xx00 (id integer, name varchar(30));
 INSERT INTO xx_adm.tab3_xx00 (id, name) VALUES ('10', 'にんじん');
 INSERT INTO xx_adm.tab3_xx00 (id, name) VALUES ('20', 'だいこん');
 COMMIT;
 GRANT SELECT ON xx_adm.tab3_xx00 TO XX_APL1;
 GRANT ALL ON xx_adm.tab3_xx00 TO XX_BAT1;
 
-CREATE TABLE xx_adm.tab4_xx00 (id integer, name varchar(10));
+CREATE TABLE xx_adm.tab4_xx00 (id integer, name varchar(30));
 INSERT INTO xx_adm.tab4_xx00 (id, name) VALUES ('10', 'ガンダム');
 INSERT INTO xx_adm.tab4_xx00 (id, name) VALUES ('20', 'ザク');
 COMMIT;
@@ -77,31 +77,31 @@ select * from mview1_xx00;
 
 set linesize 1000
 set pagesize 1000
-column id format a30
+column id format 9999
 column name format a30
 
-CREATE TABLE xy_adm.tab1_xx00 (id integer, name varchar(10));
+CREATE TABLE xy_adm.tab1_xx00 (id integer, name varchar(30));
 INSERT INTO xy_adm.tab1_xx00 (id, name) VALUES ('10', '黄鬼');
 INSERT INTO xy_adm.tab1_xx00 (id, name) VALUES ('20', '緑鬼');
 COMMIT;
 GRANT SELECT ON xy_adm.tab1_xx00 TO XX_APL1;
 GRANT ALL ON xy_adm.tab1_xx00 TO XX_BAT1;
 
-CREATE TABLE xy_adm.tab2_xx00 (id integer, name varchar(10));
+CREATE TABLE xy_adm.tab2_xx00 (id integer, name varchar(30));
 INSERT INTO xy_adm.tab2_xx00 (id, name) VALUES ('10', 'りんご');
 INSERT INTO xy_adm.tab2_xx00 (id, name) VALUES ('20', 'いちご');
 COMMIT;
 GRANT SELECT ON xy_adm.tab2_xx00 TO XX_APL1;
 GRANT ALL ON xy_adm.tab2_xx00 TO XX_BAT1;
 
-CREATE TABLE xy_adm.tab3_xx00 (id integer, name varchar(10));
+CREATE TABLE xy_adm.tab3_xx00 (id integer, name varchar(30));
 INSERT INTO xy_adm.tab3_xx00 (id, name) VALUES ('10', 'じゃがいも');
 INSERT INTO xy_adm.tab3_xx00 (id, name) VALUES ('20', 'たまねぎ');
 COMMIT;
 GRANT SELECT ON xy_adm.tab3_xx00 TO XX_APL1;
 GRANT ALL ON xy_adm.tab3_xx00 TO XX_BAT1;
 
-CREATE TABLE xy_adm.tab4_xx00 (id integer, name varchar(10));
+CREATE TABLE xy_adm.tab4_xx00 (id integer, name varchar(30));
 INSERT INTO xy_adm.tab4_xx00 (id, name) VALUES ('10', 'アムロ');
 INSERT INTO xy_adm.tab4_xx00 (id, name) VALUES ('20', 'シャア');
 COMMIT;
