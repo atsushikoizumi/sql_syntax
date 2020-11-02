@@ -5,6 +5,9 @@ oracle 向けの sql を載せていく。
     ```
     sqlplus user/pass@hostname:port/service
     ex) sqlplus masteruser/'password'@instance-name.xxxxx.eu-north-1.rds.amazonaws.com:1521/dbname
+
+    sqlplus user/pass@hostname:port/service @sample.sql
+    sqlplus user/pass@hostname:port/service @/full_pasth/sample.sql arg1 arg2 ...
     ```
 
 1. sqlplus での結果を見やすく
@@ -29,7 +32,19 @@ oracle 向けの sql を載せていく。
     select USERNAME,ACCOUNT_STATUS,CREATED,TO_CHAR(LAST_LOGIN, 'YYYY/MM/DD HH24:MI:SS') as "LAST_LOGIN",DEFAULT_TABLESPACE,TEMPORARY_TABLESPACE from dba_users order by USERNAME;
     ```
 
-3. テーブルの一覧確認
+3. ロールの一覧確認
+    ```
+    column USERNAME format a30
+    column GRANTED_ROLE format a30
+    select USERNAME,GRANTED_ROLE,ADMIN_OPTION,INHERITED from user_role_privs order by USERNAME,GRANTED_ROLE;
+
+    column GRANTEE format a30
+    column GRANTED_ROLE format a30
+    select GRANTEE,GRANTED_ROLE,ADMIN_OPTION,INHERITED from dba_role_privs order by GRANTEE,GRANTED_ROLE;
+    ```
+
+
+4. テーブルの一覧確認
     ```
     column TABLE_NAME format a30
     column TABLESPACE_NAME format a20
@@ -51,7 +66,7 @@ oracle 向けの sql を載せていく。
     select OWNER,TABLE_NAME,TABLESPACE_NAME,CLUSTER_NAME from dba_tables where OWNER in ('XX_ADM','XY_ADM') order by OWNER,TABLE_NAME;
     ```
 
-4. テーブルへのアクセス権限確認
+5. テーブルへのアクセス権限確認
     ```
     column GRANTEE format a20
     column OWNER format a20
@@ -61,7 +76,7 @@ oracle 向けの sql を載せていく。
     select GRANTEE,OWNER,TABLE_NAME,GRANTOR,PRIVILEGE from user_tab_privs order by GRANTEE,OWNER,TABLE_NAME,PRIVILEGE;
     ```
 
-5. 監査設定の確認
+6. 監査設定の確認
     ```
     show parameters audit_trail;
     
