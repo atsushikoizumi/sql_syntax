@@ -56,7 +56,7 @@ oracle 向けの sql を載せていく。
     column TABLESPACE_NAME format a20
     column CLUSTER_NAME format a20
     select OWNER,TABLE_NAME,TABLESPACE_NAME,CLUSTER_NAME from all_tables order by OWNER,TABLE_NAME;
-    select OWNER,TABLE_NAME,TABLESPACE_NAME,CLUSTER_NAME from all_tables where OWNER in ('XX_ADM','XY_ADM') order by OWNER,TABLE_NAME;
+    select OWNER,TABLE_NAME,TABLESPACE_NAME,CLUSTER_NAME from all_tables where OWNER in ('XX_ADM','XY_ADM','TEST_USER') order by OWNER,TABLE_NAME;
 
     column OWNER format a20
     column TABLE_NAME format a30
@@ -75,6 +75,15 @@ oracle 向けの sql を載せていく。
     column PRIVILEGE format a20
     select GRANTEE,OWNER,TABLE_NAME,GRANTOR,PRIVILEGE from user_tab_privs order by GRANTEE,OWNER,TABLE_NAME,PRIVILEGE;
     ```
+
+6. ビューの一覧確認
+    ```
+    column VIEW_NAME format a30
+    select VIEW_NAME from user_views order by VIEW_NAME;
+
+    column OWNER format a30
+    column VIEW_NAME format a30
+    select OWNER,VIEW_NAME from all_views where OWNER in ('XX_ADM','XY_ADM') order by OWNER,VIEW_NAME;
 
 6. 監査設定の確認
     ```
