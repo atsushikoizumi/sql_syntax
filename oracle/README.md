@@ -8,6 +8,10 @@ oracle 向けの sql を載せていく。
 
     sqlplus user/pass@hostname:port/service @sample.sql
     sqlplus user/pass@hostname:port/service @/full_pasth/sample.sql arg1 arg2 ...
+
+    オプション
+    -L 一度だけログオンを試みる。(接続失敗時に即エラー終了)
+    -S メッセージおよびプロンプト・初期メッセージの抑止 (サイレントモード)
     ```
 
 1. sqlplus での結果を見やすく
