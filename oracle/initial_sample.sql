@@ -37,7 +37,6 @@ CREATE TABLE xx_adm.tab1_xx00 (id integer, name varchar(30));
 INSERT INTO xx_adm.tab1_xx00 (id, name) VALUES ('10', '赤鬼');
 INSERT INTO xx_adm.tab1_xx00 (id, name) VALUES ('20', '青鬼');
 COMMIT;
-GRANT SELECT ON xx_adm.tab1_xx00 TO XX_APL1;
 GRANT ALL ON xx_adm.tab1_xx00 TO XX_BAT1;
 
 CREATE TABLE xx_adm.tab2_xx00 (id integer, name varchar(30));
@@ -58,12 +57,13 @@ CREATE TABLE xx_adm.tab4_xx00 (id integer, name varchar(30));
 INSERT INTO xx_adm.tab4_xx00 (id, name) VALUES ('10', 'ガンダム');
 INSERT INTO xx_adm.tab4_xx00 (id, name) VALUES ('20', 'ザク');
 COMMIT;
-GRANT SELECT ON xx_adm.tab4_xx00 TO XX_APL1;
 GRANT ALL ON xx_adm.tab4_xx00 TO XX_BAT1;
 
 CREATE VIEW xx_adm.view1_xx00 AS SELECT * FROM xx_adm.tab1_xx00;
+GRANT SELECT ON xx_adm.view1_xx00 TO XX_APL1;
 
 CREATE MATERIALIZED VIEW xx_adm.mview1_xx00  AS SELECT * FROM xx_adm.tab4_xx00;
+GRANT SELECT ON xx_adm.mview1_xx00 TO XX_APL1;
 
 select * from tab2_xx00;
 select * from tab3_xx00;
@@ -84,7 +84,6 @@ CREATE TABLE xy_adm.tab1_xx00 (id integer, name varchar(30));
 INSERT INTO xy_adm.tab1_xx00 (id, name) VALUES ('10', '黄鬼');
 INSERT INTO xy_adm.tab1_xx00 (id, name) VALUES ('20', '緑鬼');
 COMMIT;
-GRANT SELECT ON xy_adm.tab1_xx00 TO XX_APL1;
 GRANT ALL ON xy_adm.tab1_xx00 TO XX_BAT1;
 
 CREATE TABLE xy_adm.tab2_xx00 (id integer, name varchar(30));
@@ -105,12 +104,13 @@ CREATE TABLE xy_adm.tab4_xx00 (id integer, name varchar(30));
 INSERT INTO xy_adm.tab4_xx00 (id, name) VALUES ('10', 'アムロ');
 INSERT INTO xy_adm.tab4_xx00 (id, name) VALUES ('20', 'シャア');
 COMMIT;
-GRANT SELECT ON xy_adm.tab4_xx00 TO XX_APL1;
 GRANT ALL ON xy_adm.tab4_xx00 TO XX_BAT1;
 
 CREATE VIEW xy_adm.view1_xx00 AS SELECT * FROM xy_adm.tab1_xx00;
+GRANT SELECT ON xy_adm.view1_xx00 TO XX_APL1;
 
 CREATE MATERIALIZED VIEW xy_adm.mview1_xx00  AS SELECT * FROM xy_adm.tab4_xx00;
+GRANT SELECT ON xy_adm.mview1_xx00 TO XX_APL1;
 
 select * from tab2_xx00;
 select * from tab3_xx00;
@@ -122,6 +122,11 @@ select * from mview1_xx00;
 --
 -- login by xx_apl1
 -- 
+
+set linesize 1000
+set pagesize 1000
+column id format 9999
+column name format a30
 
 select * from xx_adm.tab2_xx00;
 select * from xx_adm.tab3_xx00;
