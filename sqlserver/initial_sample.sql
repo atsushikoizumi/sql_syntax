@@ -5,11 +5,17 @@
 -- Login(Server)作成
 -- DEFAULT_DATABASE の設定は multiAZ では変更できない。
 CREATE LOGIN xx_adm WITH PASSWORD = 'xx_adm_pass', DEFAULT_LANGUAGE = Japanese;
+GO
 CREATE LOGIN xx_apl1 WITH PASSWORD = 'xx_apl1_pass', DEFAULT_LANGUAGE = Japanese;
+GO
 CREATE LOGIN xx_bat1 WITH PASSWORD = 'xx_bat1_pass', DEFAULT_LANGUAGE = Japanese;
+GO
 CREATE LOGIN xx_ipls WITH PASSWORD = 'xx_ipls_pass', DEFAULT_LANGUAGE = Japanese;
+GO
 CREATE LOGIN xy_adm WITH PASSWORD = 'xy_adm_pass', DEFAULT_LANGUAGE = Japanese;
-CREATE LOGIN xx_text WITH PASSWORD = 'xx_test_pass', DEFAULT_LANGUAGE = Japanese;
+GO
+CREATE LOGIN xx_test WITH PASSWORD = 'xx_test_pass', DEFAULT_LANGUAGE = Japanese;
+GO
 
 
 -- ALter Login
@@ -35,7 +41,7 @@ CREATE DATABASE xy00 COLLATE Japanese_CI_AS;
 
 ----------------------------------------------------------
 --
--- login by xx_adm
+-- login by master user
 --
 use xx00
 GO

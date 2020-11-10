@@ -1,7 +1,7 @@
 --
 -- require by master user
 --
--- CREATE LOGIN xx_text WITH PASSWORD = 'xx_test_pass', DEFAULT_LANGUAGE = Japanese;
+-- CREATE LOGIN xx_test WITH PASSWORD = 'xx_test_pass', DEFAULT_LANGUAGE = Japanese;
 
 
 --
