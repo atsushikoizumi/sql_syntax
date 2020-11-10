@@ -72,18 +72,18 @@ SELECT * FROM xx00.tab6_xx00;
 
 -- CREATE TABLE in xx00
 CREATE TABLE xx00.itab1_xx00 (id integer, name varchar(10));
-INSERT INTO xx00.itab1_xx00 (id, name) VALUES ('10', '赤鬼');
-INSERT INTO xx00.itab1_xx00 (id, name) VALUES ('20', '青鬼');
+INSERT INTO xx00.itab1_xx00 (id, name) VALUES ('10', '紫鬼');
+INSERT INTO xx00.itab1_xx00 (id, name) VALUES ('20', '黒鬼');
 SELECT * FROM xx00.itab1_xx00;
 
-CREATE TABLE xx00.itab2_xx00 (id integer, name varchar(10));
-INSERT INTO xx00.itab2_xx00 (id, name) VALUES ('10', 'みかん');
-INSERT INTO xx00.itab2_xx00 (id, name) VALUES ('20', 'もも');
+CREATE TABLE xx00.itab2_xx00 (id integer, name varchar(12));
+INSERT INTO xx00.itab2_xx00 (id, name) VALUES ('10', 'なし');
+INSERT INTO xx00.itab2_xx00 (id, name) VALUES ('20', 'きゅうい');
 SELECT * FROM xx00.itab2_xx00;
 
 CREATE TABLE xx00.itab3_xx00 (id integer, name varchar(12));
-INSERT INTO xx00.itab3_xx00 (id, name) VALUES ('10', 'にんじん');
-INSERT INTO xx00.itab3_xx00 (id, name) VALUES ('20', 'だいこん');
+INSERT INTO xx00.itab3_xx00 (id, name) VALUES ('10', 'きゃべつ');
+INSERT INTO xx00.itab3_xx00 (id, name) VALUES ('20', 'いんげん');
 SELECT * FROM xx00.itab3_xx00;
 
 CREATE TABLE xx00.itab4_xx00 (id integer, name varchar(10));
