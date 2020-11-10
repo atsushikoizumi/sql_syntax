@@ -1,6 +1,9 @@
 #/bin/bash
 
-echo "DB_USER_LIST: taud_adm xa_adm xa_apl1 xa_bat1 xb_adm login_failure"
+ENDPOINT='koizumi-dev-db-oracle-1st.cp18wjhx9brf.eu-north-1.rds.amazonaws.com:1521'
+SID=MASTERDB
+
+echo "DB_USER_LIST: MASTERUSER XX_ADM XX_APL1 XX_BAT1 XY_ADM login_failure"
 
 if [ -n "${DB_USER}" ]; then
     echo "DB_USER: ${DB_USER}"
@@ -9,18 +12,24 @@ else
     read DB_USER
 fi
 
-if [ $DB_USER == "taud_adm" ]; then
-    sqlplus taud_adm/YP59#2XGhURCqF+x@rds-t-iwkdba-rd-o-01.cw9rwrcfymul.ap-northeast-1.rds.amazonaws.com:1521/TAUD
-elif [ $DB_USER == "xa_adm" ]; then
-    sqlplus xa_adm/XA_ADM_DBA@rds-t-iwkdba-rd-o-01.cw9rwrcfymul.ap-northeast-1.rds.amazonaws.com:1521/TAUD
-elif [ $DB_USER == "xa_apl1" ]; then
-    sqlplus xa_apl1/XA_APL1_PASS@rds-t-iwkdba-rd-o-01.cw9rwrcfymul.ap-northeast-1.rds.amazonaws.com:1521/TAUD
-elif [ $DB_USER == "xa_bat1" ]; then
-    sqlplus xa_bat1/XA_BAT1_PASS@rds-t-iwkdba-rd-o-01.cw9rwrcfymul.ap-northeast-1.rds.amazonaws.com:1521/TAUD
-elif [ $DB_USER == "xb_adm" ]; then
-    sqlplus xb_adm/XB_ADM_DBA@rds-t-iwkdba-rd-o-01.cw9rwrcfymul.ap-northeast-1.rds.amazonaws.com:1521/TAUD
+if [ $DB_USER == "MASTERUSER" ]; then
+    sqlplus MASTERUSER/'Admin123!'@${ENDPOINT}/${SID}
+
+elif [ $DB_USER == "XX_ADM" ]; then
+    sqlplus XX_ADM/XX_ADM_DBA@${ENDPOINT}/${SID}
+
+elif [ $DB_USER == "XX_APL1" ]; then
+    sqlplus XX_APL1/XX_APL1_PASS@${ENDPOINT}/${SID}
+
+elif [ $DB_USER == "XX_BAT1" ]; then
+    sqlplus XX_BAT1/XX_BAT1_PASS@${ENDPOINT}/${SID}
+
+elif [ $DB_USER == "XY_ADM" ]; then
+    sqlplus XY_ADM/XY_ADM_DBA@${ENDPOINT}/${SID}
+
 elif [ $DB_USER == "login_failure" ]; then
-    sqlplus -L xa_adm/00_ADM_DBA@rds-t-iwkdba-rd-o-01.cw9rwrcfymul.ap-northeast-1.rds.amazonaws.com:1521/TAUD
+    sqlplus -L XX_ADM/00_ADM_DBA@${ENDPOINT}/${SID}
+
 else
     echo "$DB_USER not exists."
 fi
