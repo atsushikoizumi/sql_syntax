@@ -1,4 +1,11 @@
 --
+-- [はじめに]
+--  マスターユーザー（masteruser）を置換
+--  マスターDB名（masterdb）を置換
+-- 
+
+
+--
 -- login by master user
 --
 -- ユーザー作成
@@ -9,10 +16,10 @@ CREATE ROLE xx_ipls WITH LOGIN PASSWORD 'xx_ipls_pass';
 CREATE ROLE xy_adm WITH LOGIN PASSWORD 'xy_adm_pass';
 
 
--- マスターユーザーに db-owner の権限を付与
-GRANT xx_adm TO aurora;
-GRANT xx_ipls TO aurora;
-GRANT xy_adm TO aurora;
+-- マスターユーザーに db-owner/schema-owner の権限を付与
+GRANT xx_adm TO masteruser;
+GRANT xx_ipls TO masteruser;
+GRANT xy_adm TO masteruser;
 
 -- xx_bat1 に xx_adm の権限を付与
 GRANT xx_adm TO xx_bat1;
@@ -25,7 +32,7 @@ CREATE DATABASE xy00 lc_collate 'ja_JP.UTF-8' lc_ctype 'ja_JP.UTF-8' ENCODING 'U
 
 -- public ロールのデータベースアクセス権限を剥奪
 REVOKE ALL ON DATABASE postgres FROM public;
-REVOKE ALL ON DATABASE aurora FROM public;
+REVOKE ALL ON DATABASE masterdb FROM public;
 REVOKE ALL ON DATABASE xx00 FROM public;
 REVOKE ALL ON DATABASE xy00 FROM public;
 
@@ -72,12 +79,14 @@ GRANT USAGE ON SCHEMA xy_adm TO xx_bat1;
 
 
 -- サーチパス変更
+ALTER ROLE masteruser IN DATABASE xx00 SET search_path TO xx_adm,xx_ipls;
 ALTER ROLE xx_adm IN DATABASE xx00 SET search_path TO xx_adm,xx_ipls;
 ALTER ROLE xx_apl1 IN DATABASE xx00 SET search_path TO xx_adm,xx_ipls;
 ALTER ROLE xx_bat1 IN DATABASE xx00 SET search_path TO xx_adm,xx_ipls;
 ALTER ROLE xx_ipls IN DATABASE xx00 SET search_path TO xx_ipls;
 ALTER ROLE xy_adm IN DATABASE xx00 SET search_path TO xx_adm,xx_ipls;
 
+ALTER ROLE masteruser IN DATABASE xy00 SET search_path TO xy_adm;
 ALTER ROLE xx_adm IN DATABASE xy00 SET search_path TO xy_adm;
 ALTER ROLE xx_apl1 IN DATABASE xy00 SET search_path TO xy_adm;
 ALTER ROLE xx_bat1 IN DATABASE xy00 SET search_path TO xy_adm;
