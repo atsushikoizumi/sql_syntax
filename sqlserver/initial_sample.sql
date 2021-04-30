@@ -17,6 +17,10 @@ GO
 CREATE LOGIN xx_test WITH PASSWORD = 'xx_test_pass', DEFAULT_LANGUAGE = Japanese;
 GO
 
+-- Login(WIndows)作成
+-- CREATE LOGIN [dev\admin] FROM WINDOWS;
+-- GO
+
 
 -- ALter Login
 -- DEFAULT_DATABASE の変更は multiAZ では変更できない。
